@@ -8,10 +8,14 @@ currentLine = ""
 
 process.stdin.on "data", (char) ->
     if char is "\r"
+        # carriage return - let's tweet!
         clearLine()
         process.stdout.write currentLine+"\n"
         currentLine = ""
         return
+    else if char is "\3"
+        # CTRL+C; cya!
+        process.exit 0
 
     process.stdout.write char
     currentLine += char
