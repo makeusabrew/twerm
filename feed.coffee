@@ -1,11 +1,7 @@
-Consumer = require "./consumer"
+Feed = require "./consumers/feed"
 Renderer = require "./renderer"
 
-consumer = new Consumer()
-
-throw "Sorry, please specify an auth header" unless process.argv[2]
-
-consumer.start process.argv[2]
+feed = new Feed()
 
 # hook up stdin
 process.stdin.resume()
@@ -50,11 +46,11 @@ process.stdin.on "data", (char) ->
         process.stdout.write char
         currentLine += char
 
-consumer.on "tweet", (tweet) ->
+feed.on "tweet", (tweet) ->
     writeLine Renderer.renderTweet tweet
 
-consumer.on "unknown", (data) ->
+feed.on "unknown", (data) ->
     writeLine "unknown..."
 
-consumer.on "friends", (friends) ->
+feed.on "frnds", (friends) ->
     writeLine "got friends..."

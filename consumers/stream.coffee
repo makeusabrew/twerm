@@ -29,9 +29,14 @@ class Consumer
         @ee.on event, listener
 
     emitEvent: (data) ->
-        return @ee.emit "tweet", data if data.text and data.user
 
-        return @ee.emit "friends" if data.friends
+        process.stdout.write "."
+
+        wireData = JSON.stringify data
+
+        return @ee.emit "tweet", wireData if data.text and data.user
+
+        return @ee.emit "friends", wireData if data.friends
 
         @ee.emit "unknown", data
 
