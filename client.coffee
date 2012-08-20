@@ -1,4 +1,5 @@
 Consumer = require "./consumer"
+Renderer = require "./renderer"
 
 consumer = new Consumer()
 
@@ -50,7 +51,7 @@ process.stdin.on "data", (char) ->
         currentLine += char
 
 consumer.on "tweet", (tweet) ->
-    writeLine "@#{tweet.user.screen_name}: #{tweet.text}"
+    writeLine Renderer.renderTweet tweet
 
 consumer.on "unknown", (data) ->
     writeLine "unknown..."
