@@ -29,8 +29,9 @@ class Consumer
         @ee.on event, listener
 
     emitEvent: (data) ->
-        if data.text? and data.user?
-            return @ee.emit "tweet", data
+        return @ee.emit "tweet", data if data.text and data.user
+
+        return @ee.emit "friends" if data.friends
 
         @ee.emit "unknown", data
 

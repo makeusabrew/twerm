@@ -55,3 +55,6 @@ consumer.on "tweet", (tweet) ->
 
 consumer.on "unknown", (data) ->
     writeLine "unknown..."
+
+consumer.on "friends", (friends) ->
+    writeLine "got friends..."
