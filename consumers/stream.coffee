@@ -29,29 +29,24 @@ class Consumer
         @ee.on event, listener
 
     emitEvent: (data) ->
+        
+        parsed = JSON.parse data
 
-        process.stdout.write "."
+        return @ee.emit "tweet", data if parsed.text and parsed.user
 
-        wireData = JSON.stringify data
-
-        return @ee.emit "tweet", wireData if data.text and data.user
-
-        return @ee.emit "friends", wireData if data.friends
+        return @ee.emit "friends", data if parsed.friends
 
         @ee.emit "unknown", data
 
     processChunk: (chunk) ->
-        @buffer += chunk
-        @strpos = @buffer.indexOf "\r"
+        delimPos = chunk.indexOf "\r\n"
 
-        if @strpos isnt -1
-            data = @buffer.substr 0, @strpos
-            if data.length > 1
-                @emitEvent JSON.parse data
-            else
-                #console.log "ignoring heartbeat "+data.length
+        data = chunk.substr 0, delimPos
 
-            # make sure we don't lose the remainder
-            @buffer = @buffer.substr @strpos+1
+        if data.length
+            process.stdout.write "+"
+            @emitEvent data
+        else
+            process.stdout.write "-"
 
 module.exports = Consumer
