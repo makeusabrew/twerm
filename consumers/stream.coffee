@@ -30,11 +30,9 @@ class Consumer
 
     emitEvent: (data) ->
         
-        parsed = JSON.parse data
+        return @ee.emit "tweet", data if data.text and data.user
 
-        return @ee.emit "tweet", data if parsed.text and parsed.user
-
-        return @ee.emit "friends", data if parsed.friends
+        return @ee.emit "friends", data if data.friends
 
         @ee.emit "unknown", data
 
@@ -45,7 +43,7 @@ class Consumer
 
         if data.length
             process.stdout.write "+"
-            @emitEvent data
+            @emitEvent JSON.parse data
         else
             process.stdout.write "-"
 

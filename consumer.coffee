@@ -12,10 +12,16 @@ throw "Sorry, please specify an auth header" unless process.argv[2]
 consumer.start process.argv[2]
 
 consumer.on "tweet", (tweet) ->
-    publisher.send "tweet|#{tweet}"
+
+    data = JSON.stringify tweet
+
+    publisher.send "tweet|#{data}"
 
 consumer.on "unknown", (data) ->
     console.log "unknown"
 
 consumer.on "friends", (friends) ->
-    publisher.send "frnds|#{friends}"
+    
+    data = JSON.stringify friends
+
+    publisher.send "frnds|#{data}"
