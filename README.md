@@ -12,4 +12,8 @@ off only one connection to userstream.twitter.com. At the moment, only
 ```feed.coffee``` exists, but the idea is to make standalone scripts to
 consume mentions, DMs etc, or allow them as flags to feed.coffee.
 
-## N.B. You can't tweet yet :)
+### N.B. You can't tweet yet :)
+
+## Here's a diagram of some (slightly inaccurate) thoughts:
+
+![diagram](https://docs.google.com/drawings/pub?id=1wySIU4xwdIvK-BqjeseRjxVA27qFqEVCvm5p-ryBcqY&amp;w=1054&amp;h=772 "Diagram")
