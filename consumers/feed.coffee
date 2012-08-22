@@ -6,6 +6,7 @@ class Feed
         @ee = new EventEmitter()
         subscriber = zmq.socket "sub"
 
+        # I think ZMQ pub/sub topics need to be the same length... either way, fix 'frnds'
         subscriber.subscribe "tweet"
         subscriber.subscribe "frnds"
 

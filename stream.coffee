@@ -7,6 +7,7 @@ publisher.bindSync "tcp://127.0.0.1:5600"
 
 consumer = new Stream()
 
+# this is obviously very rubbish...
 throw "Sorry, please specify an auth header" unless process.argv[2]
 
 consumer.start process.argv[2]

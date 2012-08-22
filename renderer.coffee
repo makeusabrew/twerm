@@ -36,6 +36,9 @@ dateFormat = (date) ->
     return "#{hours}:#{mins}:#{secs} #{day}/#{month}/#{year}"
 
 
+###
+# make entity order a bit more sane
+###
 processEntities = (entities) ->
     orderedEntities = []
     entityTypes = ['urls', 'media', 'hashtags', 'user_mentions']
@@ -61,6 +64,9 @@ processEntities = (entities) ->
 
     return orderedEntities
 
+###
+# spice up entities
+###
 formatText = (text, entities) ->
 
     i = entities.length
@@ -98,9 +104,6 @@ formatText = (text, entities) ->
 
 module.exports =
     renderTweet: (tweet, index) ->
-        # formatting (e.g. date, spacing etc)
-        # entities
-
         date = dateFormat new Date tweet.created_at
         screenName = pad tweet.user.screen_name + ":", " ", 20, true
 
