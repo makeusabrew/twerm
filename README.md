@@ -16,4 +16,4 @@ consume mentions, DMs etc, or allow them as flags to feed.coffee.
 
 ## Here's a diagram of some (slightly inaccurate) thoughts:
 
-![diagram](https://docs.google.com/drawings/pub?id=1wySIU4xwdIvK-BqjeseRjxVA27qFqEVCvm5p-ryBcqY&amp;w=1054&amp;h=772 "Diagram")
+![diagram](https://docs.google.com/drawings/pub?id=1wySIU4xwdIvK-BqjeseRjxVA27qFqEVCvm5p-ryBcqY&w=1054&h=772 "Diagram")
